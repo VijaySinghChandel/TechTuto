@@ -144,14 +144,14 @@
 						href="index?mylocale=hi">Hindi </a> | <a href="index?mylocale=fr">French
 					</a>
 				</div>
-<%-- 				<kbd>
+ 				<kbd>
 					<spring:message code="LABEL.HEADER.WELCOME" />
 					<sec:authorize access="isRememberMe()">
 						<kbd>
-							<a href="/PickProject/user">View existing Users</a>
+							<a href="/TechTuto/user">View existing Users</a>
 						</kbd>
 					</sec:authorize>
-				</kbd> --%>
+				</kbd> 
 				<c:if test="${param.logout != null}">
 					<div>
 						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
