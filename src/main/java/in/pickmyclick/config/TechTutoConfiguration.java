@@ -10,6 +10,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.web.servlet.LocaleResolver;
@@ -26,6 +27,7 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "in.pickmyclick")
+@PropertySource("classpath:database/mysql.properties")
 public class TechTutoConfiguration extends WebMvcConfigurerAdapter {
 
 	@Bean(name="TechTuto")
@@ -63,7 +65,7 @@ public class TechTutoConfiguration extends WebMvcConfigurerAdapter {
 		return resolver;
 	}
 
-/*	@Bean(name="dataSource")
+	@Bean(name="dataSource")
 	public DataSource getDataSource() throws SQLException {
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
@@ -73,7 +75,18 @@ public class TechTutoConfiguration extends WebMvcConfigurerAdapter {
 		dataSource.setDefaultAutoCommit(false);
 		return dataSource;
 	}
-*/
+
+	
+/*	@Bean(name="dataSource")
+	public DataSource getDataSource() {
+		BasicDataSource dataSource = new BasicDataSource();
+		dataSource.setDriverClassName("jdbc.driverClassName");
+		dataSource.setUrl("jdbc.url");
+		dataSource.setUsername("jdbc.username");
+		dataSource.setPassword("jdbc.password");
+		return dataSource;
+	}*/
+	
 	@Bean
 	public DataSourceTransactionManager dataSourceTransactionManager(DataSource dataSource) {
 		DataSourceTransactionManager dataSourceTransactionManager = new DataSourceTransactionManager();

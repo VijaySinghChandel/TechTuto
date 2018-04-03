@@ -2,13 +2,13 @@ package in.pickmyclick.security;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-import in.pickmyclick.config.PickMyClickConfiguration;
+import in.pickmyclick.config.TechTutoConfiguration;
 
 public class SpringMvcInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return new Class[] { PickMyClickConfiguration.class };
+		return new Class[] { TechTutoConfiguration.class };
 	}
  
 	@Override

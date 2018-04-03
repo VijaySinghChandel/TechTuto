@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
@@ -36,6 +37,7 @@ public class UserDAOImpl implements UserDAO{
 
 	@Override
 	public UserInfo getUserInfo(String username){
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String sql = "SELECT u.username name, u.password pass, a.authority role FROM "+
 				"users u INNER JOIN authorities a on u.username=a.username WHERE "+
 				"u.enabled =1 and u.username = ?";

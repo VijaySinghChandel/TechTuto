@@ -142,11 +142,10 @@
 							Login</a></li> -->
 					<!-- 					<li><a class="page-scroll" data-toggle="modal"
 						data-target="#myModal">Login New</a></li> -->
-					<li><a class="page-scroll" href="#logIn">Photo Prints</a></li>
-					<li><a class="page-scroll" href="#services">Services</a></li>
-					<li><a class="page-scroll" href="#portfolio">Portfolio</a></li>
+					<li><a class="page-scroll" href="#logIn">Java</a></li>
+					<li><a class="page-scroll" href="#services">Spring</a></li>
+					<li><a class="page-scroll" href="#portfolio">Web Services</a></li>
 					<li><a class="page-scroll" href="#about">About</a></li>
-					<li><a class="page-scroll" href="#team">Print Quality</a></li>
 					<li><a class="page-scroll" href="#contact">Contact</a></li>
 				</ul>
 			</div>

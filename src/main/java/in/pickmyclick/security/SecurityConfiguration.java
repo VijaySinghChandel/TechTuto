@@ -14,6 +14,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
@@ -27,56 +28,60 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	AuthenticationService authenticationService;
-	
+
 	@Autowired
-    Environment env;
-	
-	 
+	Environment env;
+
+
 	@Autowired
-    DataSource dataSource;
-	
+	DataSource dataSource;
+
 	@Autowired
 	public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
 		//ShaPasswordEncoder encoder = new ShaPasswordEncoder();
-        auth.userDetailsService(authenticationService);//.passwordEncoder(encoder);
+		//BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		auth.userDetailsService(authenticationService);//.passwordEncoder(passwordEncoder);
 	}
+
+
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-	  
-	  http.authorizeRequests()
-	  	.antMatchers("/", "/home").permitAll()
-	  	.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
-	  	.antMatchers("/user/**").access("hasRole('ROLE_USER')")
-	  	//.antMatchers("/db/**").access("hasRole('ROLE_ADMIN') and hasRole('ROLE_DBA')")
-	  	.antMatchers("/db/**").access("hasRole('ROLE_DBA')")
-	  	.and().formLogin().loginPage("/login")
-	  	.usernameParameter("ssoId").passwordParameter("password")
-	  	.and().rememberMe().rememberMeParameter("remember-me").tokenRepository(persistentTokenRepository()).tokenValiditySeconds(86400)
-	  	.and().csrf()
-	  	.and().exceptionHandling().accessDeniedPage("/Access_Denied");
+
+		http.authorizeRequests()
+		.antMatchers("/", "/home").permitAll()
+		.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
+		.antMatchers("/user/**").access("hasRole('ROLE_USER')")
+		//.antMatchers("/db/**").access("hasRole('ROLE_ADMIN') and hasRole('ROLE_DBA')")
+		.antMatchers("/db/**").access("hasRole('ROLE_DBA')")
+		.and().formLogin().loginPage("/login")
+		.usernameParameter("ssoId").passwordParameter("password")
+		.and().rememberMe().rememberMeParameter("remember-me").tokenRepository(persistentTokenRepository()).tokenValiditySeconds(86400)
+		.and().csrf()
+		.and().exceptionHandling().accessDeniedPage("/Access_Denied");
 	}
-	
+
 	@Bean(name="dataSource")
 	public DataSource getDataSource() {
-	    BasicDataSource dataSource = new BasicDataSource();
-	    dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-	    dataSource.setUrl("jdbc:mysql://localhost:3307/pickmyclickdb");
-	    dataSource.setUsername("newuser");
-	    dataSource.setPassword("password");
-	    return dataSource;
+		BasicDataSource dataSource = new BasicDataSource();
+		dataSource.setDriverClassName("jdbc.driverClassName");
+		dataSource.setUrl("jdbc.url");
+		dataSource.setUsername("jdbc.username");
+		dataSource.setPassword("jdbc.password");
+		dataSource.setDefaultAutoCommit(false);
+		return dataSource;
 	}
-	
+
 	/**This is for remember me on Login Page.
 	 * @return PersistentTokenRepository tokenRepositoryImpl
 	 */
 	@Bean
-    public PersistentTokenRepository persistentTokenRepository() {
-        JdbcTokenRepositoryImpl tokenRepositoryImpl = new JdbcTokenRepositoryImpl();
-        tokenRepositoryImpl.setDataSource(dataSource);
-        return tokenRepositoryImpl;
-    }
-	
+	public PersistentTokenRepository persistentTokenRepository() {
+		JdbcTokenRepositoryImpl tokenRepositoryImpl = new JdbcTokenRepositoryImpl();
+		tokenRepositoryImpl.setDataSource(dataSource);
+		return tokenRepositoryImpl;
+	}
+
 	@Bean
 	public ResourceBundleMessageSource messageSource() {
 		ResourceBundleMessageSource resourceBundleMessageSource = new ResourceBundleMessageSource();
