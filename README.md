@@ -1,5 +1,4 @@
 # TechTuto
-<h1 style="background-color:DodgerBlue;">TechTuto</h1>
 
 
 This Project is designed and developed by <b><i>Vijay S Chandel</i></b>,
