@@ -1,6 +1,8 @@
 # TechTuto
+<h1 style="background-color:DodgerBlue;">TechTuto</h1>
 
-This Project is designed and developed by Vijay S Chandel,
+
+This Project is designed and developed by <b><i>Vijay S Chandel</i></b>,
 
 Technical Stack : Java , Spring MVC, MySQL Database, Angular JS , Bootstrap
 
