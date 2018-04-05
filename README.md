@@ -18,7 +18,7 @@ Proposed Module & Funcionalites
 
 
 Thanks 
-Vijay S Chandel
+<b> Vijay S. Chandel </b>
 9880055965
 
  
