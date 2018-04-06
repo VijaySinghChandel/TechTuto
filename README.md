@@ -1,7 +1,8 @@
 # TechTuto
 
 @Vijay
-This is branch for Tech
+
+This is to resolve the conflict!
 
 This Project is designed and developed by <b><i>Vijay S Chandel</i></b>,
 
