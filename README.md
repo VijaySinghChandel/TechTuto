@@ -1,5 +1,7 @@
 # TechTuto
 
+@Vijay
+This is the master/trunk for this tech tuto repo
 
 This Project is designed and developed by <b><i>Vijay S Chandel</i></b>,
 
