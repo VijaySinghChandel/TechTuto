@@ -1,5 +1,7 @@
 # TechTuto
 
+@Vijay
+This is branch for Tech
 
 This Project is designed and developed by <b><i>Vijay S Chandel</i></b>,
 
@@ -20,6 +22,6 @@ Proposed Module & Funcionalites
 
 Thanks 
 <b> Vijay S. Chandel </b>
-9880055965
+
 
  
