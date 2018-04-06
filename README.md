@@ -1,7 +1,8 @@
 # TechTuto
 
 @Vijay
-This is the master/trunk for this tech tuto repo
+
+This is to resolve the conflict!
 
 This Project is designed and developed by <b><i>Vijay S Chandel</i></b>,
 
@@ -22,6 +23,6 @@ Proposed Module & Funcionalites
 
 Thanks 
 <b> Vijay S. Chandel </b>
-9880055965
+
 
  
